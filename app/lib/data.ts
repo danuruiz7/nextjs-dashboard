@@ -32,6 +32,9 @@ export async function fetchRevenue() {
 
 export async function fetchLatestInvoices() {
   try {
+    // console.log('Fetching revenue data...');
+    // await new Promise((resolve) => setTimeout(resolve, 8000));
+
     const data = await sql<LatestInvoiceRaw[]>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
       FROM invoices
@@ -88,7 +91,7 @@ export async function fetchCardData() {
 const ITEMS_PER_PAGE = 6;
 export async function fetchFilteredInvoices(
   query: string,
-  currentPage: number,
+  currentPage: number
 ) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
